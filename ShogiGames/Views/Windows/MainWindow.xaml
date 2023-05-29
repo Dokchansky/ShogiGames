@@ -7,11 +7,170 @@
         xmlns:local="clr-namespace:ShogiGames"
         mc:Ignorable="d"
         Title="{Binding Title}" 
-        Height="450" Width="800">
+        Height="970" Width="960" MinWidth="700">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100px"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="100px"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition x:Name="moveListColumn" Width="210px"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="_Игра" Margin="2">
+                <MenuItem Header="_Новая игра"/>
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="12*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DockPanel x:Name="filesTop" Grid.Column="1" Grid.Row="0">
+                <Viewbox Width="{Binding ActualWidht, ElementName=sizeReference, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}">
+                    <Label Content="9"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}">
+                    <Label Content="８"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}">
+                    <Label Content="７"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}">
+                    <Label Content="６"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}">
+                    <Label Content="５"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}">
+                    <Label Content="４"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}">
+                    <Label Content="３"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}">
+                    <Label Content="２"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}">
+                    <Label Content="１"/>
+                </Viewbox>
+            </DockPanel>
+            <DockPanel x:Name="rankLeft" Grid.Column="0" Grid.Row="1">
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference,Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="一"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="二"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="三"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="四"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="五"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="六" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="七" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="八" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="九" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+            </DockPanel>
+            <DockPanel x:Name="filesBottom" Grid.Column="1" Grid.Row="2">
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="1"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="２"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="３"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="４"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="５"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="６" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="７" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="８" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Width="{Binding ActualWidth, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Right">
+                    <Label Content="９" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+            </DockPanel>
+            <!--Японские символы позиции справа-->
+            <DockPanel x:Name="ranksRight" Grid.Column="2" Grid.Row="1">
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="一"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="二"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="三"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="四"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="五"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="六" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="七" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="八" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+                <Viewbox Height="{Binding ActualHeight, ElementName=sizeReference, Mode=OneWay}" DockPanel.Dock="Top">
+                    <Label Content="九" Visibility="{Binding Visibility, ElementName=shogiBoardBackground}"/>
+                </Viewbox>
+            </DockPanel>
+            <!--Для стороны Сёте-->
+            <Viewbox x:Name="senteEvaluationView" Grid.Column="0" Grid.Row="2">
+                <Label x:Name="senteEvaluation" Content="?" Foreground="Navy" MouseUp="evaluation_MouseUp"/>
+            </Viewbox>
+            <Viewbox x:Name="gotoEvaluationView" Grid.Column="2" Grid.Row="0">
+                <Label x:Name="gotoEvaluation" Content="?" Foreground="Navy" MouseUp="evaluation_MouseUp"/>
+            </Viewbox>
+            <Border Grid.Column="1" Grid.Row="1" BorderBrush="Black" BorderThickness="1">
+                <Grid>
+                    <Grid x:Name="shogiBoardBackground">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
